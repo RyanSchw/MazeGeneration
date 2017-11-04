@@ -1,5 +1,5 @@
 # MazeGeneration
-MATLAB Assignment for ENGR 133. Generates a maze of variable size and difficulty. Depth-first search idea found from[wikipedia](https://en.wikipedia.org/wiki/Maze_generation_algorithm).
+MATLAB Assignment for ENGR 133. Generates a maze of variable size and difficulty. Depth-first search idea found from [wikipedia](https://en.wikipedia.org/wiki/Maze_generation_algorithm).
 
 #### Program Function
 This program uses a randomized version of the depth-first search algorithm to generate a maze of size *n* and difficulty *d*. The `main` function controls the rest of this program, so this is the only function that needs to be called in order to generate a maze. Descriptions of the created functions are listed below.
@@ -55,7 +55,7 @@ Inputs: *maze, endPos* \
 Outputs: *maze* \
 This function connects the end piece to the rest of the maze. Because the movement constraints are set to not directly touch the border (8's), a connection must be made to the generated maze. This is done by traversing straight down from the end position until a connection has been made to the rest of the maze. This is indicated by looking left, right, and down to see if there is a 1 next to it. This outputs the adjusted maze at the end of this function.
 #### checkNode.m
-*Credit to Bailey Keel for helping me come up with this idea* \
+*Credit to Bailey Keel for helping me come up with this idea.* \
 Inputs: *futurePoint, previousPoint* \
 Outputs: *result* \
 This function checks to see if the movement would result in the creation of a node. Most simply, a node is created when there is a change in the direction of a path. In all cases, the generated point (`futurePoint`) will be in a different row and column than the last point (`previousPoint`, **not** `currentPoint`). If a node is found, returns `true`.

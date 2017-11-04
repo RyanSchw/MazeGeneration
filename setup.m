@@ -1,4 +1,4 @@
-function [maze, nodes, startPos, endPos] = setup(size)
+function [maze, nodes, position, endPos] = setup(size)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 Program Description
 %	This function ...
@@ -19,9 +19,19 @@ function [maze, nodes, startPos, endPos] = setup(size)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% INITIALIZATION ---
-
+maze = zeros(size);
+maze(1, 1:end) = 8;
+maze(1:end, 1) = 8;
+maze(end, 1:end) = 8;
+maze(1:end, end) = 8;
 
 %% CALCULATIONS ---
+position = point(random(numel(size) - 2) + 1, numel(size));
+maze = setMazePoint(maze, position, 3);
+position = adjust(position, 1, 0);
+nodes = [position];
+
+endPos = point(random(numel(size) - 2) + 1, 1);
 
 
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
