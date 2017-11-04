@@ -19,10 +19,130 @@ function [positions] = validateMove(maze, position)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% INITIALIZATION ---
-
+positions = [1 1 1 1]; % Up, down, left, right
+[lenrow, lencol] = size(maze);
 
 %% CALCULATIONS ---
+% Check up
+if position.row == 2
+    positions(1) = 0;
+elseif position.row == 3
+    for z = [-1 0 1]
+        disp up
+        disp(maze);
+        disp(z);
+        disp up
+        if mazeValue(maze, position, -1, z)
+            positions(1) = 0;
+        end
+    end
+else
+    for k = [-2 -1]
+        for z = [-1 0 1]
+            %if position.col == 2 && z == -1
+            disp Up
+            disp(maze);
+            disp(position.row);
+            disp(position.col);
+            disp(k);
+            disp(z);
+            disp Up
+            if mazeValue(maze, position, k, z) == 1
+                positions(1) = 0;
+            end
+        end
+    end
+end
 
+% Check down
+if position.row == lencol - 1
+    positions(2) = 0;
+elseif position.row == lencol - 2
+    for z = [-1 0 1]
+        disp down
+        disp(maze);
+        disp(z);
+        disp down
+        if mazeValue(maze, position, 1, z)
+            positions(2) = 0;
+        end
+    end
+else
+    for k = [1 2]
+        for z = [-1 0 1]
+            disp Down
+            disp(maze);
+            disp(position.row);
+            disp(position.col);
+            disp(k);
+            disp(z);
+            disp Down
+            if mazeValue(maze, position, k, z) == 1
+                positions(2) = 0;
+            end
+        end
+    end
+end
+
+% Check left
+if position.col == 2
+    positions(3) = 0;
+elseif position.col == 3
+    for z = [-1 0 1]
+        disp left
+        disp(maze);
+        disp(z);
+        disp left
+        if mazeValue(maze, position, z, -1)
+            positions(3) = 0;
+        end
+    end
+else
+    for k = [-1 0 1]
+        for z = [-2 -1]
+            disp Left
+            disp(maze);
+            disp(position.row);
+            disp(position.col);
+            disp(k);
+            disp(z);
+            disp Left
+            if mazeValue(maze, position, k, z) == 1
+                positions(3) = 0;
+            end
+        end
+    end
+end
+
+% Check right
+if position.col == lenrow - 1
+    positions(4) = 0;
+elseif position.col == lenrow - 2
+    for z = [-1 0 1]
+        disp right
+        disp(maze);
+        disp(z);
+        disp right
+        if mazeValue(maze, position, z, 1)
+            positions(4) = 0;
+        end
+    end
+else
+    for k = [-1 0 1]
+        for z = [1 2]
+            disp Right
+            disp(maze);
+            disp(position.row);
+            disp(position.col);
+            disp(k);
+            disp(z);
+            disp Right
+            if mazeValue(maze, position, k, z) == 1
+                positions(4) = 0;
+            end
+        end
+    end
+end
 
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
 

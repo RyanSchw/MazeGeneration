@@ -31,39 +31,53 @@ function [maze, position, nodes] = move(maze, position, nodes)
 %% INITIALIZATION ---
 % directions = [up, down, left, right]
 % up, down, left, right can be 1 for OK or 0 for NO
-[directions] = validateMove(maze, position)
+[directions] = validateMove(maze, position);
 
 %% CALCULATIONS ---
 if any(directions) == 0
-    if position == nodes(end)
+    if same(position, nodes) == 1
         % Remove last node because all positions are exhausted
         nodes = nodes(1 : end - 1);
     else
-        position = nodes(end);
+        position = point(nodes(1, end), nodes(2, end));
     end
 else
-    % numel = 1, 2, 3, or 4
+    % sum(directions) = 1, 2, 3
     % Random direction
-
-    % Find previous number 1
-    previousPosition = point(0, 0) % Create new point for previous position
-    if maze(position.x - 1, position.y) == 1
-        previousPosition = position.x - 1, position.y;
-    elseif maze(position.x + 1, position.y) == 1
-        previousPosition = position.x + 1, position.y;
-    elseif maze(position.x, position.y - 1) == 1
-        previousPosition = position.x , position.y - 1;
+    locations = directions .* (100/sum(directions));
+    disp(locations);
+    if sum(locations) ~= 100
+        locations(1) = locations(1) + 100 - sum(locations);
+    end
+    r = randi([1 100]);
+    if r <= locations(1)
+        futurePosition = point(position.row - 1, position.col);
+    elseif r <= locations(2) + locations(1)
+        futurePosition = point(position.row + 1, position.col);
+    elseif r <= locations(3) + locations(2) + locations(1)
+        futurePosition = point(position.row, position.col - 1);
     else
-        % maze(position.x, position.y + 1) == 1
-        previousPosition = position.x, position.y + 1;
+        futurePosition = point(position.row, position.col + 1);
+    end
+    
+    % Find previous number 1
+    if mazeValue(maze, position, -1, 0) == 1
+        previousPosition = point(position.row - 1, position.col);
+    elseif maze(position.row + 1, position.col) == 1
+        previousPosition = point(position.row + 1, position.col);
+    elseif maze(position.row, position.col - 1) == 1
+        previousPosition = point(position.row , position.col - 1);
+    else % maze(position.row, position.col + 1) == 1
+        previousPosition = point(position.row, position.col + 1);
     end
 
-    if checkNodes(futurePosition, previousPosition) == true
-        nodes = [nodes, position];
+    if checkNode(futurePosition, previousPosition) == 1
+        nodes(1, end + 1) = futurePosition.row;
+        nodes(2, end + 1) = futurePosition.col;
     end
 
     position = futurePosition;
-    maze = setMazePoint(maze, position, 1);
+    maze = setMazePosition(maze, position, 1);
 end
 
 %% FORMATTED TEXT & FIGURE DISPLAYS ---

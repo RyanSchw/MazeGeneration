@@ -1,4 +1,4 @@
-function [result] = checkNodes(fPoint, pPoint)
+function [result] = checkNode(fPosition, pPosition)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 Program Description
 %	This function ...
@@ -22,7 +22,11 @@ function [result] = checkNodes(fPoint, pPoint)
 
 
 %% CALCULATIONS ---
-
+if fPosition.row ~= pPosition.row || fPosition.col ~= pPosition.col
+    result = 1;
+else
+    result = 0;
+end
 
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
 

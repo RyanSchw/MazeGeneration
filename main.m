@@ -1,9 +1,11 @@
 function [] = main()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 Program Description
-%	This function This is the main function of the maze generation program. This uses the setup function to create an
-%   empty maze. Then, it uses the move function while there are no more nodes listed in the nodes list. At the very end,
-%   it uses the adjustEnd function to link the exit to the rest of the maze.
+%	This function This is the main function of the maze generation program.
+%   This uses the setup function to create an empty maze. Then, it uses the
+%   move function while there are no more nodes listed in the nodes list.
+%   At the very end, it uses the adjustEnd function to link the exit to the
+%   rest of the maze.
 %
 % Function Call
 %   function [] = main()
@@ -24,22 +26,26 @@ function [] = main()
 % Grabs user input for size and difficulty
 % Constraints for size: Positive number greater than 5
 % Constraints for difficulty: 1 < d < 10
-size = input("Enter size of maze: ");
-difficulty = input("Enter of difficulty of maze: ");
-while (size <= 5 || difficulty < 1 || difficulty > 10)
-    size = input("Enter size of maze: ");
-    difficulty = input("Enter of difficulty of maze: ");
-end
+% res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
+% size = str2num(res{1});
+% difficulty = str2num(res{2});
+% while size <= 5 || difficulty < 1 || difficulty > 10
+%     res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
+%     size = str2num(res{1});
+%     difficulty = str2num(res{2});
+% end
+size = 10;
+difficulty = 2;
 
 %% CALCULATIONS ---
-[maze, nodes, position, endPoint] = setup(size)
+[maze, nodes, position, endPoint] = setup(size);
 while numel(nodes) > 0
-    [maze, position, nodes] = move(maze, position, nodes)
+    [maze, position, nodes] = move(maze, position, nodes);
 end
 maze = adjustEnd(maze, endPoint);
 
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
-disp maze;
+dispMaze(maze);
 
 %% COMMAND WINDOW OUTPUTS ---
 

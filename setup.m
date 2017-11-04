@@ -26,13 +26,15 @@ maze(end, 1:end) = 8;
 maze(1:end, end) = 8;
 
 %% CALCULATIONS ---
-position = point(random(numel(size) - 2) + 1, numel(size));
-maze = setMazePoint(maze, position, 3);
-position = adjust(position, 1, 0);
-nodes = [position];
+position = point(size, randi([2 (size - 1)]));
+maze = setMazePosition(maze, position, 3);
+position = adjust(position, -1, 0);
+maze = setMazePosition(maze, position, 1);
+nodes(1, 1) = position.row;
+nodes(2, 1) = position.col;
 
-endPos = point(random(numel(size) - 2) + 1, 1);
-
+endPos = point(1, randi([2 (size - 1)]));
+maze = setMazePosition(maze, endPos, 4);
 
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
 

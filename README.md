@@ -36,8 +36,8 @@ A reference to where each requirement can be found in the list below:
 ### Function List
 #### main.m
 Inputs: *None* \
-Outputs: *None* (Note: displays maze with disp function) \
-This is the main function of the maze generation program. This uses the `setup` function to create an empty maze. Then, it uses the `move` function while there are no more nodes listed in the `nodes` list. At the very end, it uses the `adjustEnd` function to link the exit to the rest of the maze.
+Outputs: *None* (Note: displays maze with `dispMaze` function) \
+This is the main function of the maze generation program. This uses the `setup` function to create an empty maze. Then, it uses the `move` function while there are no more nodes listed in the `nodes` list. The `adjustEnd` function is used to link the exit to the rest of the maze. Lastly, `dispMaze` function is called to format the maze to a viewable format.
 #### setup.m
 Inputs: *size* \
 Outputs: *maze, nodes, startPos, endPos* \
@@ -59,7 +59,10 @@ This function connects the end piece to the rest of the maze. Because the moveme
 Inputs: *futurePoint, previousPoint* \
 Outputs: *result* \
 This function checks to see if the movement would result in the creation of a node. Most simply, a node is created when there is a change in the direction of a path. In all cases, the generated point (`futurePoint`) will be in a different row and column than the last point (`previousPoint`, **not** `currentPoint`). If a node is found, returns `true`.
-
+#### dispMaze.m
+Inputs: *maze* \
+Outputs: *None* (Note: displays maze) \
+This function formats the matrix to be graphed via a heatmap. This is a two dimensional graph in which there are different colors based on the value in the matrix. That way, the walls can be black, paths white, and start/end orange.
 ---
 ### Movement
 ##### Weighing Movement Directions

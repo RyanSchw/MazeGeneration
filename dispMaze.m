@@ -1,4 +1,4 @@
-function [maze] = adjustEnd(maze, endPosition)
+function [] = dispMaze(maze)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 Program Description
 %	This function ...
@@ -19,26 +19,13 @@ function [maze] = adjustEnd(maze, endPosition)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% INITIALIZATION ---
-position = point(endPosition.row + 1, endPosition.col);
-maze = setMazePosition(maze, position, 1);
-connection = 0;
-while connection == 0
-    % Search if there are any 1's in down, left, right positions
-    if mazeValue(maze, position, 1, 0) == 1
-        connection = 1;
-    elseif mazeValue(maze, position, 0, -1) == 1
-        connection = 1;
-    elseif mazeValue(maze, position, 0, 1) == 1
-        connection = 1;
-    else
-        % If there are no surrounding 1's, move down
-        position = adjust(position, 1, 0);
-        maze = setMazePosition(maze, position, 1);
-    end
-end
+
 
 %% CALCULATIONS ---
+hmo = HeatMap(maze);
+addTitle(hmo, 'Maze');
 
+plot(hmo);
 
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
 
