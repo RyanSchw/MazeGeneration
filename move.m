@@ -37,15 +37,14 @@ function [maze, position, nodes] = move(maze, position, nodes)
 if any(directions) == 0
     if same(position, nodes) == 1
         % Remove last node because all positions are exhausted
-        nodes = nodes(1 : end - 1);
+        nodes = nodes(:, 1 : end - 1);
     else
         position = point(nodes(1, end), nodes(2, end));
     end
 else
     % sum(directions) = 1, 2, 3
     % Random direction
-    locations = directions .* (100/sum(directions));
-    disp(locations);
+    locations = directions .* floor(100/sum(directions));
     if sum(locations) ~= 100
         locations(1) = locations(1) + 100 - sum(locations);
     end
@@ -63,17 +62,17 @@ else
     % Find previous number 1
     if mazeValue(maze, position, -1, 0) == 1
         previousPosition = point(position.row - 1, position.col);
-    elseif maze(position.row + 1, position.col) == 1
+    elseif mazeValue(maze, position, 1, 0) == 1
         previousPosition = point(position.row + 1, position.col);
-    elseif maze(position.row, position.col - 1) == 1
+    elseif mazeValue(maze, position, 0, -1) == 1
         previousPosition = point(position.row , position.col - 1);
-    else % maze(position.row, position.col + 1) == 1
+    else % mazeValue(maze, position, 0, 1) == 1
         previousPosition = point(position.row, position.col + 1);
     end
 
     if checkNode(futurePosition, previousPosition) == 1
         nodes(1, end + 1) = futurePosition.row;
-        nodes(2, end + 1) = futurePosition.col;
+        nodes(2, end) = futurePosition.col;
     end
 
     position = futurePosition;

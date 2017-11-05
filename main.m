@@ -26,16 +26,14 @@ function [] = main()
 % Grabs user input for size and difficulty
 % Constraints for size: Positive number greater than 5
 % Constraints for difficulty: 1 < d < 10
-% res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
-% size = str2num(res{1});
-% difficulty = str2num(res{2});
-% while size <= 5 || difficulty < 1 || difficulty > 10
-%     res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
-%     size = str2num(res{1});
-%     difficulty = str2num(res{2});
-% end
-size = 10;
-difficulty = 2;
+res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
+size = str2num(res{1});
+difficulty = str2num(res{2});
+while size <= 5 || difficulty < 1 || difficulty > 10
+    res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
+    size = str2num(res{1});
+    difficulty = str2num(res{2});
+end
 
 %% CALCULATIONS ---
 [maze, nodes, position, endPoint] = setup(size);

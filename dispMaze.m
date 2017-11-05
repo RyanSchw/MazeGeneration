@@ -25,8 +25,6 @@ function [] = dispMaze(maze)
 hmo = HeatMap(maze);
 addTitle(hmo, 'Maze');
 
-plot(hmo);
-
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
 
 

@@ -22,7 +22,7 @@ function [result] = checkNode(fPosition, pPosition)
 
 
 %% CALCULATIONS ---
-if fPosition.row ~= pPosition.row || fPosition.col ~= pPosition.col
+if fPosition.row ~= pPosition.row && fPosition.col ~= pPosition.col
     result = 1;
 else
     result = 0;
