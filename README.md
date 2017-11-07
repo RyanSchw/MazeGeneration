@@ -62,8 +62,28 @@ This function checks to see if the movement would result in the creation of a no
 #### dispMaze.m
 Inputs: *maze* \
 Outputs: *None* (Note: displays maze) \
-This function formats the matrix to be graphed via a heatmap. This is a two dimensional graph in which there are different colors based on the value in the matrix. That way, the walls can be black, paths white, and start/end orange.
+This function formats the matrix to be graphed via heatmap. This is a two dimensional graph in which there are different colors based on the value in the matrix. That way, the walls can be black, paths white, and start/end orange.
+#### point.m
+Point class
+Properties: *row, col*
+Methods: *point(a, b), adjust(maze, position, value), mazeValue(maze, position, a, b), same(a, nodes)*
+The purpose of this class is to prevent the need for x and y components for all points throughout the maze. These functions are mostly one liners whos purpose is to make adjustments to the maze and positions simpler.
+
+
 ---
+
 ### Movement
 ##### Weighing Movement Directions
+The difficulty input allows for a user to adjust the tendency for the maze to traverse upwards versus side to side. When a random number is generated (1-100), the different directions are given different weightings (based on difficulty). By default, the difficulty is 5, meaning all directions have a tendency to travel upwards. The higher the difficulty, the higher the tendency for the path to traverse side to side. The lower the difficulty, the higher the tendency for the path to traverse upwards. This is represented by the following code sequence: \
+```
+% Possible directions: [Up, down, left, right]
+locations = directions .* floor(100/sum(directions));
+if sum(locations) ~= 100
+locations(1) = locations(1) + 100 - sum(locations);
+end
+locations(1) = locations(1) + ((difficulty - 5) * 6);
+locations(2) = locations(2) - ((difficulty - 5) * 2);
+locations(3) = locations(3) - ((difficulty - 5) * 2);
+locations(4) = locations(4) - ((difficulty - 5) * 2);
+```
 ##### Valid Movement Matrix

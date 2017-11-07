@@ -38,7 +38,7 @@ end
 %% CALCULATIONS ---
 [maze, nodes, position, endPoint] = setup(size);
 while numel(nodes) > 0
-    [maze, position, nodes] = move(maze, position, nodes);
+    [maze, position, nodes] = move(maze, position, nodes, difficulty);
 end
 maze = adjustEnd(maze, endPoint);
 

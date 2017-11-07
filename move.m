@@ -1,4 +1,4 @@
-function [maze, position, nodes] = move(maze, position, nodes)
+function [maze, position, nodes] = move(maze, position, nodes, difficulty)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 Program Description
 %	This function his function takes a maze and generates one new point along its current path. This function is
@@ -48,6 +48,10 @@ else
     if sum(locations) ~= 100
         locations(1) = locations(1) + 100 - sum(locations);
     end
+    locations(1) = locations(1) + ((difficulty - 5) * 3);
+    locations(2) = locations(2) - ((difficulty - 5) * 1);
+    locations(3) = locations(3) - ((difficulty - 5) * 1);
+    locations(4) = locations(4) - ((difficulty - 5) * 1);
     r = randi([1 100]);
     if r <= locations(1)
         futurePosition = point(position.row - 1, position.col);
