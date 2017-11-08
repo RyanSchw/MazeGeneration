@@ -89,4 +89,4 @@ locations(4) = locations(4) - ((difficulty - 5) * 2);
 ```
 ##### Valid Movement Matrix
 During the `validateMove` function, a series of surrounding points are checked to see if the maze can move in that direction. Below is a matrix that indicates which directions are not valid if there is a point there. The current point is marked with an *O*. If there is a point where an *X* is, then the directions the arrows point in are now marked as an invalid direction.
-![Valid Movement Matrix](https://imgur.com/a/0XlLb)
+![Valid Movement Matrix](https://github.com/RyanSchw/MazeGeneration/raw/master/Documentation/VMM.png "Valid Movement Matrix")
