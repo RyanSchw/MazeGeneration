@@ -5,7 +5,8 @@ MATLAB Assignment for ENGR 133. Generates a maze of variable size and difficulty
 This program uses a randomized version of the depth-first search algorithm to generate a maze of size *n* and difficulty *d*. The `main` function controls the rest of this program, so this is the only function that needs to be called in order to generate a maze. Descriptions of the created functions are listed below.
 
 #### Instructions
-To use this program, simply navigate to the directory that holds all files listed below. Open `main.m` and press *run*. The program will ask for user input for the *size* and *difficulty* of the maze. The *size* input can be any number larger than 5. The *difficulty* must be 1 - 10.
+To use this program, simply navigate to the directory that holds all files listed below. Open `main.m` and press *run*. The program will ask for user input for the *size* and *difficulty* of the maze. The *size* input can be any number larger than 5. The *difficulty* must be 1 - 10. \
+To do: Include screenshots and example parameters along with expected outputs
 
 #### Maze Definitions
 Num | Item
@@ -22,14 +23,14 @@ Num | Item
 
 #### Project Requirements
 A reference to where each requirement can be found in the list below:
-1. User input: `main` function lines x - x
-2. Functions: One `main` function with five subfunctions, `setup`, `move`, `validateMove`, `adjustEnd`, `checkNodes`
-3. For loop: 
-4. While loop:
-5. Embedded loops:
-6. Matrix:
-7. Conditional structure: 
-8. 100 lines of code: 
+1. User input: `main` function lines 29 - 36
+2. Functions: One `main` function with five subfunctions, `setup`, `move`, `validateMove`, `adjustEnd`, `checkNodes`, `dispMaze`
+3. For loop: `validateMove` function lines 36 - 42
+4. While loop: `main` function lines 32 - 36
+5. Embedded loops: `validateMove` function lines 36 - 42
+6. Matrix: `main` function lines 39 - 46
+7. Conditional structure: `adjustEnd` function lines 27 - 37
+8. 100 lines of code: Current code is about 300 lines without the function headers at the top
 
 ---
 
@@ -87,3 +88,5 @@ locations(3) = locations(3) - ((difficulty - 5) * 2);
 locations(4) = locations(4) - ((difficulty - 5) * 2);
 ```
 ##### Valid Movement Matrix
+During the `validateMove` function, a series of surrounding points are checked to see if the maze can move in that direction. Below is a matrix that indicates which directions are not valid if there is a point there. The current point is marked with an *O*. If there is a point where an *X* is, then the directions the arrows point in are now marked as an invalid direction.
+![Valid Movement Matrix](https://imgur.com/a/0XlLb)
