@@ -34,6 +34,7 @@ function [maze, position, nodes] = move(maze, position, nodes, difficulty)
 [directions] = validateMove(maze, position);
 
 %% CALCULATIONS ---
+% Check if that route can continue or not
 if any(directions) == 0
     if same(position, nodes) == 1
         % Remove last node because all positions are exhausted
@@ -48,6 +49,7 @@ else
     if sum(locations) ~= 100
         locations(1) = locations(1) + 100 - sum(locations);
     end
+    % Adjusts based on difficulty
     locations(1) = locations(1) + ((difficulty - 5) * 3);
     locations(2) = locations(2) - ((difficulty - 5) * 1);
     locations(3) = locations(3) - ((difficulty - 5) * 1);

@@ -19,6 +19,7 @@ function [maze, nodes, position, endPos] = setup(size)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% INITIALIZATION ---
+% Generate maze, create borders of 8s
 maze = zeros(size);
 maze(1, 1:end) = 8;
 maze(1:end, 1) = 8;
@@ -26,6 +27,7 @@ maze(end, 1:end) = 8;
 maze(1:end, end) = 8;
 
 %% CALCULATIONS ---
+% Generate random starting and ending points
 position = point(size, randi([2 (size - 1)]));
 maze = setMazePosition(maze, position, 3);
 position = adjust(position, -1, 0);

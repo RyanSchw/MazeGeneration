@@ -4,10 +4,13 @@ classdef point
         col
     end
     methods
+        % Constructor
         function [obj] = point(a, b)
             obj.row = a;
             obj.col = b;
         end
+
+        % Functions
         function [maze] = setMazePosition(maze, position, value)
             maze(position.row, position.col) = value;
         end

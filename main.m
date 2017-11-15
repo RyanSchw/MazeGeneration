@@ -37,6 +37,7 @@ end
 
 %% CALCULATIONS ---
 [maze, nodes, position, endPoint] = setup(size);
+% Runs generation process until there are no more nodes left
 while numel(nodes) > 0
     [maze, position, nodes] = move(maze, position, nodes, difficulty);
 end

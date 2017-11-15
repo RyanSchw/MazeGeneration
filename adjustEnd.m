@@ -19,6 +19,7 @@ function [maze] = adjustEnd(maze, endPosition)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% INITIALIZATION ---
+% Set position below end point to be a 1 (start the connection process)
 position = point(endPosition.row + 1, endPosition.col);
 maze = setMazePosition(maze, position, 1);
 connection = 0;
