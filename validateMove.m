@@ -20,7 +20,7 @@ function [positions] = validateMove(maze, position)
 
 %% INITIALIZATION ---
 positions = [1 1 1 1]; % Up, down, left, right
-[lenrow, lencol] = size(maze);
+[numrow, numcol] = size(maze);
 
 %% CALCULATIONS ---
 % Check up
@@ -28,7 +28,7 @@ if position.row == 2
     positions(1) = 0;
 elseif position.row == 3
     for z = [-1 0 1]
-        if mazeValue(maze, position, -1, z)
+        if mazeValue(maze, position, -1, z) == 1
             positions(1) = 0;
         end
     end
@@ -43,11 +43,11 @@ else
 end
 
 % Check down
-if position.row == lencol - 1
+if position.row == numrow - 1
     positions(2) = 0;
-elseif position.row == lencol - 2
+elseif position.row == numrow - 2
     for z = [-1 0 1]
-        if mazeValue(maze, position, 1, z)
+        if mazeValue(maze, position, 1, z) == 1
             positions(2) = 0;
         end
     end
@@ -66,7 +66,7 @@ if position.col == 2
     positions(3) = 0;
 elseif position.col == 3
     for z = [-1 0 1]
-        if mazeValue(maze, position, z, -1)
+        if mazeValue(maze, position, z, -1) ==1
             positions(3) = 0;
         end
     end
@@ -81,11 +81,11 @@ else
 end
 
 % Check right
-if position.col == lenrow - 1
+if position.col == numcol - 1
     positions(4) = 0;
-elseif position.col == lenrow - 2
+elseif position.col == numcol - 2
     for z = [-1 0 1]
-        if mazeValue(maze, position, z, 1)
+        if mazeValue(maze, position, z, 1) == 1
             positions(4) = 0;
         end
     end
@@ -100,7 +100,6 @@ else
 end
 
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
-
 
 %% COMMAND WINDOW OUTPUTS ---
 

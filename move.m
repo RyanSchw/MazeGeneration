@@ -45,15 +45,20 @@ if any(directions) == 0
 else
     % sum(directions) = 1, 2, 3
     % Random direction
-    locations = directions .* floor(100/sum(directions));
+    locations = directions .* floor(100.0/sum(directions));
+    % Adusts difficulty
+    % 25% increase in upward tendency if difficulty is 1
+    locations(1) = locations(1) * (1 - ((difficulty - 5.0)/14));
+    locations(2) = locations(2) * (1 + ((difficulty - 5.0)/14));
+    locations(3) = locations(3) * (1 + ((difficulty - 5.0)/14));
+    locations(4) = locations(4) * (1 + ((difficulty - 5.0)/14));
     if sum(locations) ~= 100
-        locations(1) = locations(1) + 100 - sum(locations);
+        for k = 1:4
+            if directions(k) == 1
+                locations(k) = locations(k) + 100 - sum(locations);
+            end
+        end
     end
-    % Adjusts based on difficulty
-    locations(1) = locations(1) + ((difficulty - 5) * 3);
-    locations(2) = locations(2) - ((difficulty - 5) * 1);
-    locations(3) = locations(3) - ((difficulty - 5) * 1);
-    locations(4) = locations(4) - ((difficulty - 5) * 1);
     r = randi([1 100]);
     if r <= locations(1)
         futurePosition = point(position.row - 1, position.col);
