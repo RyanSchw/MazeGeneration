@@ -28,6 +28,7 @@ function [result] = checkNode(fPosition, pPosition)
 
 
 %% CALCULATIONS ---
+% If a right angle is formed, then it is a node
 if fPosition.row ~= pPosition.row && fPosition.col ~= pPosition.col
     result = 1;
 else

@@ -75,17 +75,18 @@ The purpose of this class is to prevent the need for x and y components for all 
 
 ### Movement
 ##### Weighing Movement Directions
-The difficulty input allows for a user to adjust the tendency for the maze to traverse upwards versus side to side. When a random number is generated (1-100), the different directions are given different weightings (based on difficulty). By default, the difficulty is 5, meaning all directions have a tendency to travel upwards. The higher the difficulty, the higher the tendency for the path to traverse side to side. The lower the difficulty, the higher the tendency for the path to traverse upwards. This is represented by the following code sequence: \
+The difficulty input allows for a user to adjust the tendency for the maze to traverse upwards versus side to side. When a random number is generated (1-100), the different directions are given different weightings (based on difficulty). By default, the difficulty is 5, meaning all directions have a tendency to travel upwards. The higher the difficulty, the higher the tendency for the path to traverse side to side. The lower the difficulty, the higher the tendency for the path to traverse upwards. This is represented by the following code sequence:
 ```
 % Possible directions: [Up, down, left, right]
 locations = directions .* floor(100/sum(directions));
+% Percentage based increase
+locations(1) = locations(1) * (1 - ((difficulty - 5.0)/14));
+locations(2) = locations(2) * (1 + ((difficulty - 5.0)/14));
+locations(3) = locations(3) * (1 + ((difficulty - 5.0)/14));
+locations(4) = locations(4) * (1 + ((difficulty - 5.0)/14));
 if sum(locations) ~= 100
 locations(1) = locations(1) + 100 - sum(locations);
 end
-locations(1) = locations(1) + ((difficulty - 5) * 6);
-locations(2) = locations(2) - ((difficulty - 5) * 2);
-locations(3) = locations(3) - ((difficulty - 5) * 2);
-locations(4) = locations(4) - ((difficulty - 5) * 2);
 ```
 ##### Valid Movement Matrix
 During the `validateMove` function, a series of surrounding points are checked to see if the maze can move in that direction. Below is a matrix that indicates which directions are not valid if there is a point there. The current point is marked with an *O*. If there is a point where an *X* is, then the directions the arrows point in are now marked as an invalid direction.

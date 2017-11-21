@@ -22,9 +22,11 @@ function [] = dispMaze(maze)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% INITIALIZATION ---
+% Color map
 cmap = [1 1 1; .12 .39 1; 1 1 1; 1 .5 0; 1 .5 0; 1 1 1; 1 1 1; .65 .65 .65];
 
 %% CALCULATIONS ---
+% Create live imagery of map
 hmo = imagesc(maze);
 colormap(cmap);
 set(gca, 'XColor', 'none');
