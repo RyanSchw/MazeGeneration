@@ -1,16 +1,28 @@
 function [maze, nodes, position, endPos] = setup(size)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 Program Description
-%	This function ...
+%	This function This function takes a size parameter and generates a nxn
+%   matrix of that size. Next, the function creates a border of 8's around
+%   the outside edges. It then randomly generates a start and end point
+%   (which will be returned at the end of the function). The start point
+%   will be located at some point along the bottom row (where it will
+%   replace one of the 8's). The end point will be located at some point
+%   along the top row (where it will replace one of the 8's). A 1 (path)
+%   will be generated directly above the start point, and a node will be
+%   created at that point. The function then returns the created maze, a
+%   list of nodes, and the start/end positions of the maze.
 %
 % Function Call
-%
+%   function [maze, nodes, position, endPos] = setup(size)
 %
 % Input Arguments
-%	1.
+%	1. size: User-defined maze size
 %
 % Output Arguments
-%	1.
+%	1. maze: Blank maze template of size x size dimensions
+%   2. nodes: Initial list of nodes
+%   3. position: Initial position
+%   4. endPos: Position of ending block
 %
 % Assignment Information
 %	Assignment:         MATLAB Individual Project

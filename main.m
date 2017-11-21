@@ -29,6 +29,7 @@ function [] = main()
 res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
 size = str2num(res{1});
 difficulty = str2num(res{2});
+% Verify numbers are correct
 while size <= 5 || difficulty < 1 || difficulty > 10
     res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
     size = str2num(res{1});
@@ -40,11 +41,13 @@ end
 % Runs generation process until there are no more nodes left
 while numel(nodes) > 0
     [maze, position, nodes] = move(maze, position, nodes, difficulty);
+    dispMaze(maze);
 end
 maze = adjustEnd(maze, endPoint);
 
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
 dispMaze(maze);
+fprintf('Completed successfully\n');
 
 %% COMMAND WINDOW OUTPUTS ---
 

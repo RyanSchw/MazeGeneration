@@ -1,4 +1,16 @@
 classdef point
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ENGR 132 Program Description
+%	The purpose of this class is to prevent the need for x and y components
+%   for all points throughout the maze. These functions are mostly one
+%   liners whos purpose is to make adjustments to the maze and positions
+%   simpler.
+%
+% Assignment Information
+%	Assignment:         MATLAB Individual Project
+%	Author:             Ryan Schwartz, schwar95@purdue.edu
+%  	Team ID:            001-07
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     properties
         row
         col

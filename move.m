@@ -17,10 +17,15 @@ function [maze, position, nodes] = move(maze, position, nodes, difficulty)
 %   function [maze, position, nodes] = move(maze, position)
 %
 % Input Arguments
-%	1.
+%	1. maze: Current maze
+%   2. position: Current position
+%   3. nodes: Current list of nodes
+%   4. difficulty: User-defined difficulty (1 low, 10 high)
 %
 % Output Arguments
-%	1.
+%	1. maze: Updated maze
+%   2. position: Updated position
+%   3. nodes: Updated list of nodes
 %
 % Assignment Information
 %	Assignment:         MATLAB Individual Project
@@ -47,7 +52,7 @@ else
     % Random direction
     locations = directions .* floor(100.0/sum(directions));
     % Adusts difficulty
-    % 25% increase in upward tendency if difficulty is 1
+    % Increase in upward tendency if difficulty is 1
     locations(1) = locations(1) * (1 - ((difficulty - 5.0)/14));
     locations(2) = locations(2) * (1 + ((difficulty - 5.0)/14));
     locations(3) = locations(3) * (1 + ((difficulty - 5.0)/14));
@@ -59,6 +64,7 @@ else
             end
         end
     end
+    % Choose random direction
     r = randi([1 100]);
     if r <= locations(1)
         futurePosition = point(position.row - 1, position.col);
@@ -81,9 +87,10 @@ else
         previousPosition = point(position.row, position.col + 1);
     end
 
+    % Check if node created
     if checkNode(futurePosition, previousPosition) == 1
-        nodes(1, end + 1) = futurePosition.row;
-        nodes(2, end) = futurePosition.col;
+        nodes(1, end + 1) = position.row;
+        nodes(2, end) = position.col;
     end
 
     position = futurePosition;

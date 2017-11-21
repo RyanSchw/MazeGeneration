@@ -1,16 +1,23 @@
 function [maze] = adjustEnd(maze, endPosition)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 Program Description
-%	This function ...
+%	This function This function connects the end piece to the rest of the
+%   maze. Because the movement constraints are set to not directly touch
+%   the border (8's), a connection must be made to the generated maze. This
+%   is done by traversing straight down from the end position until a
+%   connection has been made to the rest of the maze. This is indicated by
+%   looking left, right, and down to see if there is a 1 next to it. This
+%   outputs the adjusted maze at the end of this function.
 %
 % Function Call
-%
+%   function [maze] = adjustEnd(maze, endPosition)
 %
 % Input Arguments
-%	1.
+%	1. maze: Current maze
+%   2. endPosition: (point class) Position of end point
 %
 % Output Arguments
-%	1.
+%	1. maze: Current maze
 %
 % Assignment Information
 %	Assignment:         MATLAB Individual Project

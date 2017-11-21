@@ -1,16 +1,22 @@
 function [positions] = validateMove(maze, position)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 Program Description
-%	This function ...
+%	This function telsl the move function where the current position could
+%   possibly go. This function will return a matrix called directions that
+%   will return either a 1 or a 0 for each direction. The format for
+%   directions is up, down, left, right. Valid movements are checked using
+%   a valid movement matrix outlined on GitHub.
 %
 % Function Call
-%
+%   function [positions] = validateMove(maze, position)
 %
 % Input Arguments
-%	1.
+%	1. maze: Current maze
+%   2. position: Current position
 %
 % Output Arguments
-%	1.
+%	1. positions: Matrix that shows what available directions can be used.
+%	Formatted in [up down left right], where 1's are viable movements.
 %
 % Assignment Information
 %	Assignment:         MATLAB Individual Project
