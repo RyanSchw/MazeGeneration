@@ -23,13 +23,13 @@ Num | Item
 
 #### Project Requirements
 A reference to where each requirement can be found in the list below:
-1. User input: `main` function lines 29 - 36
+1. User input: `main` function lines 29 - 37
 2. Functions: One `main` function with five subfunctions, `setup`, `move`, `validateMove`, `adjustEnd`, `checkNodes`, `dispMaze`
-3. For loop: `validateMove` function lines 36 - 42
-4. While loop: `main` function lines 32 - 36
-5. Embedded loops: `validateMove` function lines 36 - 42
-6. Matrix: `main` function lines 39 - 46
-7. Conditional structure: `adjustEnd` function lines 27 - 37
+3. For loop: `validateMove` function lines 36 - 40
+4. While loop: `main` function lines 33 - 37
+5. Embedded loops: `validateMove` function lines 42 - 48
+6. Matrix: `main` function lines 40 - 50
+7. Conditional structure: `adjustEnd` function lines 35 - 45
 8. 100 lines of code: Current code is about 300 lines without the function headers at the top
 
 ---
