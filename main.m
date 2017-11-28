@@ -1,20 +1,10 @@
-function [] = main()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 Program Description
-%	This function This is the main function of the maze generation program.
+%	This script is the main controller of the maze generation program.
 %   This uses the setup function to create an empty maze. Then, it uses the
 %   move function while there are no more nodes listed in the nodes list.
 %   At the very end, it uses the adjustEnd function to link the exit to the
 %   rest of the maze.
-%
-% Function Call
-%   function [] = main()
-%
-% Input Arguments
-%	1. None
-%
-% Output Arguments
-%	1. None
 %
 % Assignment Information
 %	Assignment:         MATLAB Individual Project
@@ -24,14 +14,14 @@ function [] = main()
 
 %% INITIALIZATION ---
 % Grabs user input for size and difficulty
-% Constraints for size: Positive number greater than 5
+% Constraints for size: Positive number 5 < s < 100
 % Constraints for difficulty: 1 < d < 10
 res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
 size = str2num(res{1});
 difficulty = str2num(res{2});
 % Verify numbers are correct
-while size <= 5 || difficulty < 1 || difficulty > 10
-    res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Input', 1);
+while size > 100 || size <= 5 || difficulty < 1 || difficulty > 10
+    res = inputdlg({'Enter size of maze:', 'Enter difficulty of maze:'}, 'Incorrect Input', 1);
     size = str2num(res{1});
     difficulty = str2num(res{2});
 end
@@ -48,6 +38,7 @@ maze = adjustEnd(maze, endPoint);
 %% FORMATTED TEXT & FIGURE DISPLAYS ---
 dispMaze(maze);
 fprintf('Completed successfully\n');
+clear
 
 %% COMMAND WINDOW OUTPUTS ---
 
